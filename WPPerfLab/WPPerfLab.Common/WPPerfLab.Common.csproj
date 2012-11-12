@@ -88,6 +88,7 @@
     <Compile Include="Profiling\ForegroundMemoryProfiler.cs" />
     <Compile Include="Profiling\MemoryProfiler.cs" />
     <Compile Include="Profiling\MemoryProfilerSettings.cs" />
+    <Compile Include="Profiling\Timer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Binary\BinarySerializationHelper.cs" />
     <Compile Include="Serialization\Binary\CustomBinarySerializer.cs" />
