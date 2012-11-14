@@ -1,7 +1,4 @@
-﻿using System.Windows.Threading;
-
-using Microsoft.Phone.Controls;
-using System;
+﻿using Microsoft.Phone.Controls;
 
 namespace WPPerfLab.Samples.EnableRedrawRegionsSamples
 {

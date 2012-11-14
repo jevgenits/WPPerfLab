@@ -37,6 +37,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>BasicCorrectnessRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -98,6 +99,9 @@
       <DependentUpon>BrokenTimerUpdatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="EnableRedrawRegionsSamples\BrokenTimerUpdateViewModel.cs" />
+    <Compile Include="ListSamples\NonVirtualizedStackPanel.xaml.cs">
+      <DependentUpon>NonVirtualizedStackPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -123,10 +127,10 @@
     <Compile Include="Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VirtualizationSamples\NonVirtualizedListSampleView.xaml.cs">
+    <Compile Include="ListSamples\NonVirtualizedListSampleView.xaml.cs">
       <DependentUpon>NonVirtualizedListSampleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VirtualizationSamples\VirtualizedListSampleView.xaml.cs">
+    <Compile Include="ListSamples\VirtualizedListSampleView.xaml.cs">
       <DependentUpon>VirtualizedListSampleView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -138,6 +142,10 @@
     <Page Include="EnableRedrawRegionsSamples\BrokenTimerUpdatePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ListSamples\NonVirtualizedStackPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
@@ -163,11 +171,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VirtualizationSamples\NonVirtualizedListSampleView.xaml">
+    <Page Include="ListSamples\NonVirtualizedListSampleView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="VirtualizationSamples\VirtualizedListSampleView.xaml">
+    <Page Include="ListSamples\VirtualizedListSampleView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
