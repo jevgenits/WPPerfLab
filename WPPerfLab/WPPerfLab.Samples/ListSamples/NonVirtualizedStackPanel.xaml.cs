@@ -12,7 +12,9 @@ namespace WPPerfLab.Samples.ListSamples
             Loaded += (s, e) =>
                 {
                     long height = 25;
-                    for (int i = 0; i < 1600; i++)
+                    int numberOfItems = 1600;
+
+                    for (int i = 0; i < numberOfItems; i++)
                     {
                         itemList.Items.Add(height);
                     }
