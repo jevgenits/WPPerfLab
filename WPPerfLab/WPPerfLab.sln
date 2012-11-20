@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPPerfLab.Common", "WPPerfL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPPerfLab.Samples", "WPPerfLab.Samples\WPPerfLab.Samples.csproj", "{7C9C9717-9D21-411F-A19A-6483B31453F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPPerfLab.Profiling", "WPPerfLab.Profiling\WPPerfLab.Profiling.csproj", "{80F39608-4591-4D58-A821-98595FA3571C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,18 @@ Global
 		{7C9C9717-9D21-411F-A19A-6483B31453F0}.Release|x86.ActiveCfg = Release|x86
 		{7C9C9717-9D21-411F-A19A-6483B31453F0}.Release|x86.Build.0 = Release|x86
 		{7C9C9717-9D21-411F-A19A-6483B31453F0}.Release|x86.Deploy.0 = Release|x86
+		{80F39608-4591-4D58-A821-98595FA3571C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F39608-4591-4D58-A821-98595FA3571C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80F39608-4591-4D58-A821-98595FA3571C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{80F39608-4591-4D58-A821-98595FA3571C}.Debug|ARM.Build.0 = Debug|ARM
+		{80F39608-4591-4D58-A821-98595FA3571C}.Debug|x86.ActiveCfg = Debug|x86
+		{80F39608-4591-4D58-A821-98595FA3571C}.Debug|x86.Build.0 = Debug|x86
+		{80F39608-4591-4D58-A821-98595FA3571C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F39608-4591-4D58-A821-98595FA3571C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F39608-4591-4D58-A821-98595FA3571C}.Release|ARM.ActiveCfg = Release|ARM
+		{80F39608-4591-4D58-A821-98595FA3571C}.Release|ARM.Build.0 = Release|ARM
+		{80F39608-4591-4D58-A821-98595FA3571C}.Release|x86.ActiveCfg = Release|x86
+		{80F39608-4591-4D58-A821-98595FA3571C}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

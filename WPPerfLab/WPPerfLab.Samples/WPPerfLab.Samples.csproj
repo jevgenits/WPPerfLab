@@ -221,6 +221,10 @@
       <Project>{4C3C054D-C4B5-4D89-BEC7-4933663B3120}</Project>
       <Name>WPPerfLab.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WPPerfLab.Profiling\WPPerfLab.Profiling.csproj">
+      <Project>{80F39608-4591-4D58-A821-98595FA3571C}</Project>
+      <Name>WPPerfLab.Profiling</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
