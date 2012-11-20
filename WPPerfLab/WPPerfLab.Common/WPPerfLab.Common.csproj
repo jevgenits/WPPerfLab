@@ -93,6 +93,7 @@
     <Compile Include="Serialization\XML\XMLSerializerHelper.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
+    <Compile Include="Utils\Timer.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

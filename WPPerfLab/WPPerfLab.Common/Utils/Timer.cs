@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace WPPerfLab.Common.Profiling
+namespace WPPerfLab.Common.Utils
 {
     public static class Timer
     {

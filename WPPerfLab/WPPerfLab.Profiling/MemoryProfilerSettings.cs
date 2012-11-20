@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Media;
 
-namespace WPPerfLab.Common.Profiling
+namespace WPPerfLab.Profiling
 {
     public class MemoryProfilerSettings
     {
@@ -12,6 +9,7 @@ namespace WPPerfLab.Common.Profiling
         public bool IsConsoleLoggingEnabled { get; set; }
         public bool IsPopupLoggingEnabled { get; set; }
         public TimeSpan TimerInterval { get; set; }
+        public Color BackgroundColor { get; set; }
 
         public static MemoryProfilerSettings Default
         {
@@ -22,7 +20,8 @@ namespace WPPerfLab.Common.Profiling
                     FontSize = 16,
                     IsConsoleLoggingEnabled = false,
                     IsPopupLoggingEnabled = true,
-                    TimerInterval = TimeSpan.FromSeconds(1)
+                    TimerInterval = TimeSpan.FromSeconds(1),
+                    BackgroundColor = Colors.Transparent
                 };
             }
         }

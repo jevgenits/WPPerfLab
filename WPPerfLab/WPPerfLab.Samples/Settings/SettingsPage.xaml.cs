@@ -2,7 +2,7 @@
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 
-using WPPerfLab.Common.Profiling;
+using WPPerfLab.Profiling;
 
 namespace WPPerfLab.Samples.Settings
 {

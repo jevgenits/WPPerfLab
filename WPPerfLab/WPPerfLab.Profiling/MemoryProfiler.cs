@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace WPPerfLab.Common.Profiling
+namespace WPPerfLab.Profiling
 {
     public class MemoryProfiler
     {
@@ -76,7 +72,8 @@ namespace WPPerfLab.Common.Profiling
             {
                 Orientation = Orientation.Horizontal,
                 VerticalAlignment = VerticalAlignment.Top,
-                HorizontalAlignment = HorizontalAlignment.Left
+                HorizontalAlignment = HorizontalAlignment.Left,
+                Background = new SolidColorBrush(settings.BackgroundColor)
             };
 
             popupContentPanel.Children.Add(GenerateTextBlockForPopup(Colors.White, "Current: "));
