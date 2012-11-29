@@ -1,26 +1,17 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.Runtime.Serialization.Json;
 using System.IO;
 
-namespace EugeneDotnetWP7Serialization.DataContractJSON
+namespace WPPerfLab.Common.Serialization.DataContractJSON
 {
-    public class DataContractJSONSerializationHelper
+    public class DataContractJsonSerializationHelper
     {
         public static void Serialize(Stream streamObject, object objForSerialization)
         {
             if (objForSerialization == null || streamObject == null)
                 return;
 
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(objForSerialization.GetType());
+            var ser = new DataContractJsonSerializer(objForSerialization.GetType());
             ser.WriteObject(streamObject, objForSerialization);
         }
 
@@ -29,7 +20,7 @@ namespace EugeneDotnetWP7Serialization.DataContractJSON
             if (serializedObjectType == null || streamObject == null)
                 return null;
 
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(serializedObjectType);
+            var ser = new DataContractJsonSerializer(serializedObjectType);
             return ser.ReadObject(streamObject);
         }
     }

@@ -1,32 +1,28 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Runtime.Serialization;
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
-namespace EugeneDotnetWP7Serialization.Binary
+namespace WPPerfLab.Common.Serialization.Binary
 {
     public class CustomBinarySerializer
     {
-        private List<PropertyInfo> serializableProperties = new List<PropertyInfo>();
-        private Type serializableObjectType;
+        private readonly List<PropertyInfo> serializableProperties = new List<PropertyInfo>();
+        private readonly Type serializableObjectType;
 
         public CustomBinarySerializer(Type objectType)
         {
-            serializableObjectType = objectType;
-            serializableProperties = GetMarkedProperties(objectType);
+            this.serializableObjectType = objectType;
+            this.serializableProperties = this.GetMarkedProperties(objectType);
         }
 
         private List<PropertyInfo> GetMarkedProperties(Type type)
         {
             return (from property in type.GetProperties()
-                    where property.GetCustomAttributes(true)
-                    .Where((x) => x is System.Runtime.Serialization.DataMemberAttribute).Count() > 0
-                    select property
-                    ).ToList();
+                    where property.GetCustomAttributes(true).Any(x => x is DataMemberAttribute)
+                    select property).ToList();
         }
 
         #region Write
@@ -36,9 +32,9 @@ namespace EugeneDotnetWP7Serialization.Binary
             if (stream == null || graph == null)
                 return;
 
-            BinaryWriter bw = new BinaryWriter(stream);
+            var bw = new BinaryWriter(stream);
 
-            foreach (PropertyInfo pi in serializableProperties)
+            foreach (PropertyInfo pi in this.serializableProperties)
             {
                 var value = pi.GetValue(graph, null);
 
@@ -48,7 +44,7 @@ namespace EugeneDotnetWP7Serialization.Binary
                 }
                 else if (pi.PropertyType == typeof(List<int>))
                 {
-                    WriteIntegerList(bw, value as List<int>);
+                    this.WriteIntegerList(bw, value as List<int>);
                 }
             }
         }
@@ -62,7 +58,7 @@ namespace EugeneDotnetWP7Serialization.Binary
             else
             {
                 bw.Write(list.Count);
-                list.ForEach(x => bw.Write(x));
+                list.ForEach(bw.Write);
             }
         }
 
@@ -75,11 +71,11 @@ namespace EugeneDotnetWP7Serialization.Binary
             if (stream == null)
                 return null;
 
-            BinaryReader br = new BinaryReader(stream);
+            var br = new BinaryReader(stream);
 
-            object deserializedObject = Activator.CreateInstance(serializableObjectType);
+            object deserializedObject = Activator.CreateInstance(this.serializableObjectType);
 
-            foreach (PropertyInfo pi in serializableProperties)
+            foreach (PropertyInfo pi in this.serializableProperties)
             {
                 if (pi.PropertyType == typeof(string))
                 {
@@ -87,7 +83,7 @@ namespace EugeneDotnetWP7Serialization.Binary
                 }
                 else if (pi.PropertyType == typeof(List<int>))
                 {
-                    pi.SetValue(deserializedObject, ReadIntegerList(br), null);
+                    pi.SetValue(deserializedObject, this.ReadIntegerList(br), null);
                 }
             }
             return deserializedObject;
@@ -95,7 +91,7 @@ namespace EugeneDotnetWP7Serialization.Binary
 
         private List<int> ReadIntegerList(BinaryReader br)
         {
-            List<int> list = new List<int>();
+            var list = new List<int>();
             int count = br.ReadInt32();
 
             int index = count;
@@ -106,7 +102,6 @@ namespace EugeneDotnetWP7Serialization.Binary
             }
             return list;
         }
-
 
         #endregion Read
 

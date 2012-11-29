@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace EugeneDotnetWP7Serialization.XML
+namespace WPPerfLab.Common.Serialization.XML
 {
     public class XMLSerializerHelper
     {
@@ -20,7 +11,7 @@ namespace EugeneDotnetWP7Serialization.XML
             if (objForSerialization == null || streamObject == null)
                 return;
 
-            XmlSerializer serializer = new XmlSerializer(objForSerialization.GetType());
+            var serializer = new XmlSerializer(objForSerialization.GetType());
             serializer.Serialize(streamObject, objForSerialization);
         }
 
@@ -29,7 +20,7 @@ namespace EugeneDotnetWP7Serialization.XML
             if (serializedObjectType == null || streamObject == null)
                 return null;
 
-            XmlSerializer serializer = new XmlSerializer(serializedObjectType);
+            var serializer = new XmlSerializer(serializedObjectType);
             return serializer.Deserialize(streamObject);
         }
     }
