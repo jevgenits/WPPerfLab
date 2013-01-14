@@ -5,6 +5,7 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using WPPerfLab.Profiling;
 using WPPerfLab.Samples.Resources;
 
 namespace WPPerfLab.Samples

@@ -10,8 +10,8 @@ namespace WPPerfLab.Common.Serialization.Binary
             if (objForSerialization == null || streamObject == null)
                 return;
 
-            var ser = new CustomBinarySerializer(objForSerialization.GetType());
-            ser.WriteObject(streamObject, objForSerialization);
+            //var ser = new CustomBinarySerializer(objForSerialization.GetType());
+            //ser.WriteObject(streamObject, objForSerialization);
         }
 
         public static object Deserialize(Stream streamObject, Type serializedObjectType)

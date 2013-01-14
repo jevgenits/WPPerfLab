@@ -17,6 +17,7 @@ namespace WPPerfLab.Profiling
         private static StackPanel popupContentPanel;
         private static TextBlock textblockCurrentMemoryUsage;
         private static TextBlock textblockPeakMemoryUsage;
+        private static TextBlock textblockBatteryRemainingChargePercent;
 
         public static bool IsRunning { get; set; }
 
@@ -84,6 +85,10 @@ namespace WPPerfLab.Profiling
             textblockPeakMemoryUsage = GenerateTextBlockForPopup(Colors.Yellow, "N/A");
             popupContentPanel.Children.Add(textblockPeakMemoryUsage);
 
+            popupContentPanel.Children.Add(GenerateTextBlockForPopup(Colors.Orange, "Bat: "));
+            textblockBatteryRemainingChargePercent = GenerateTextBlockForPopup(Colors.Orange, "N/A");
+            popupContentPanel.Children.Add(textblockBatteryRemainingChargePercent);
+
             popupControl.Child = popupContentPanel;
 
             popupControl.IsOpen = true;
@@ -103,17 +108,21 @@ namespace WPPerfLab.Profiling
         {
             string currentMemory = GetFormatedMemoryUsage(ForegroundMemoryProfiler.CurrentMemoryUsage);
             string peakMemory = GetFormatedMemoryUsage(ForegroundMemoryProfiler.PeakMemoryUsage);
+            string batteryRemainingPercent = BatteryUsageProfiler.BatteryRemainingChargePercent.ToString();
 
             if (settings.IsConsoleLoggingEnabled)
             {
                 LogToConsole("Current Memory Usage", currentMemory);
                 LogToConsole("Peak Memory Usage", peakMemory);
+                LogToConsole("Battery Remaining Charge Percent", batteryRemainingPercent);
+                LogToConsole("Battery Remaining Time(ms)", BatteryUsageProfiler.BatteryRemainingTimeInMilliseconds.ToString());
             }
 
             if (settings.IsPopupLoggingEnabled)
             {
                 textblockCurrentMemoryUsage.Text = currentMemory;
                 textblockPeakMemoryUsage.Text = peakMemory;
+                textblockBatteryRemainingChargePercent.Text = batteryRemainingPercent;
             }
         }
 

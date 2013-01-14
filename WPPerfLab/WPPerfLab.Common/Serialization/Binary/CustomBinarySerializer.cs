@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
@@ -14,8 +15,57 @@ namespace WPPerfLab.Common.Serialization.Binary
 
         public CustomBinarySerializer(Type objectType)
         {
-            this.serializableObjectType = objectType;
-            this.serializableProperties = this.GetMarkedProperties(objectType);
+            serializableObjectType = objectType;
+            serializableProperties = GetMarkedProperties(objectType);
+        }
+
+        public void WriteObject(Stream stream, object graph)
+        {
+            if (stream == null || graph == null)
+            {
+                return;
+            }
+
+            var bw = new BinaryWriter(stream);
+
+            foreach (PropertyInfo pi in serializableProperties)
+            {
+                var value = pi.GetValue(graph, null);
+
+                if (pi.PropertyType == typeof(string))
+                {
+                    bw.Write(value as string ?? string.Empty);
+                }
+                else if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof(IList<>))
+                {
+                    WriteList(bw, value as IList);
+                }
+            }
+        }
+
+        public object ReadObject(Stream stream)
+        {
+            if (stream == null)
+            {
+                return null;
+            }
+
+            var br = new BinaryReader(stream);
+
+            var deserializedObject = Activator.CreateInstance(serializableObjectType);
+
+            foreach (PropertyInfo pi in serializableProperties)
+            {
+                if (pi.PropertyType == typeof(string))
+                {
+                    pi.SetValue(deserializedObject, br.ReadString(), null);
+                }
+                else if (serializableObjectType.IsGenericType && serializableObjectType.GetGenericTypeDefinition() == typeof(IList<>))
+                {
+                    //pi.SetValue(deserializedObject, ReadList(br), null);
+                }
+            }
+            return deserializedObject;
         }
 
         private List<PropertyInfo> GetMarkedProperties(Type type)
@@ -25,85 +75,30 @@ namespace WPPerfLab.Common.Serialization.Binary
                     select property).ToList();
         }
 
-        #region Write
-
-        public void WriteObject(Stream stream, object graph)
+        private void WriteList(BinaryWriter bw, IList list)
         {
-            if (stream == null || graph == null)
-                return;
-
-            var bw = new BinaryWriter(stream);
-
-            foreach (PropertyInfo pi in this.serializableProperties)
-            {
-                var value = pi.GetValue(graph, null);
-
-                if (pi.PropertyType == typeof(string))
-                {
-                    bw.Write(value as string ?? string.Empty);
-                }
-                else if (pi.PropertyType == typeof(List<int>))
-                {
-                    this.WriteIntegerList(bw, value as List<int>);
-                }
-            }
-        }
-
-        private void WriteIntegerList(BinaryWriter bw, List<int> list)
-        {
-            if (list == null || !list.Any())
+            if (list == null || list.Count == 0)
             {
                 bw.Write(0);
             }
             else
             {
                 bw.Write(list.Count);
-                list.ForEach(bw.Write);
-            }
-        }
-
-        #endregion Write
-
-        #region Read
-
-        public object ReadObject(Stream stream)
-        {
-            if (stream == null)
-                return null;
-
-            var br = new BinaryReader(stream);
-
-            object deserializedObject = Activator.CreateInstance(this.serializableObjectType);
-
-            foreach (PropertyInfo pi in this.serializableProperties)
-            {
-                if (pi.PropertyType == typeof(string))
+                foreach (var item in list)
                 {
-                    pi.SetValue(deserializedObject, br.ReadString(), null);
-                }
-                else if (pi.PropertyType == typeof(List<int>))
-                {
-                    pi.SetValue(deserializedObject, this.ReadIntegerList(br), null);
+                    if (item is string)
+                    {
+                        var str = (string) item;
+                        // write lenght of the string first
+                        bw.Write(str.Length);
+                        // write every char of string
+                        foreach (var c in str.ToCharArray())
+                        {
+                            bw.Write(c);
+                        }
+                    }       
                 }
             }
-            return deserializedObject;
         }
-
-        private List<int> ReadIntegerList(BinaryReader br)
-        {
-            var list = new List<int>();
-            int count = br.ReadInt32();
-
-            int index = count;
-            while (index > 0)
-            {
-                list.Add(br.ReadInt32());
-                index--;
-            }
-            return list;
-        }
-
-        #endregion Read
-
     }
 }

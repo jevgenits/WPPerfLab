@@ -83,6 +83,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BatteryUsageProfiler.cs" />
     <Compile Include="ForegroundMemoryProfiler.cs" />
     <Compile Include="MemoryProfiler.cs" />
     <Compile Include="MemoryProfilerSettings.cs" />

@@ -18,7 +18,7 @@ namespace WPPerfLab.Profiling
                 return new MemoryProfilerSettings()
                 {
                     FontSize = 16,
-                    IsConsoleLoggingEnabled = false,
+                    IsConsoleLoggingEnabled = true,
                     IsPopupLoggingEnabled = true,
                     TimerInterval = TimeSpan.FromSeconds(1),
                     BackgroundColor = Colors.Transparent
