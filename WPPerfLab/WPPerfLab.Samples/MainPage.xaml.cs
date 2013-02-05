@@ -56,5 +56,10 @@ namespace WPPerfLab.Samples
         {
             NavigationService.Navigate(new Uri("/Settings/SettingsPage.xaml", UriKind.Relative));
         }
+
+        private void NavigateToThreadSamples(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/ThreadSamples/ThreadSamplesView.xaml", UriKind.Relative));
+        }
     }
 }

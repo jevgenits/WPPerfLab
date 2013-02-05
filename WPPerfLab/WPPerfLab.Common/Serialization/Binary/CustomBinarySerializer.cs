@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Collections.Generic;
@@ -32,11 +33,11 @@ namespace WPPerfLab.Common.Serialization.Binary
             {
                 var value = pi.GetValue(graph, null);
 
-                if (pi.PropertyType == typeof(string))
+                if (pi.PropertyType == typeof (string))
                 {
                     bw.Write(value as string ?? string.Empty);
                 }
-                else if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof(IList<>))
+                else if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof (IList<>))
                 {
                     WriteList(bw, value as IList);
                 }
@@ -56,13 +57,13 @@ namespace WPPerfLab.Common.Serialization.Binary
 
             foreach (PropertyInfo pi in serializableProperties)
             {
-                if (pi.PropertyType == typeof(string))
+                if (pi.PropertyType == typeof (string))
                 {
                     pi.SetValue(deserializedObject, br.ReadString(), null);
                 }
-                else if (serializableObjectType.IsGenericType && serializableObjectType.GetGenericTypeDefinition() == typeof(IList<>))
+                else if (serializableObjectType.IsGenericType && serializableObjectType.GetGenericTypeDefinition() == typeof (IList<>))
                 {
-                    //pi.SetValue(deserializedObject, ReadList(br), null);
+                    pi.SetValue(deserializedObject, ReadList(br), null);
                 }
             }
             return deserializedObject;
@@ -82,7 +83,7 @@ namespace WPPerfLab.Common.Serialization.Binary
                 bw.Write(0);
             }
             else
-            {
+            {   
                 bw.Write(list.Count);
                 foreach (var item in list)
                 {
@@ -96,9 +97,37 @@ namespace WPPerfLab.Common.Serialization.Binary
                         {
                             bw.Write(c);
                         }
-                    }       
+                    }
                 }
             }
         }
-    }
+
+        private IList ReadList(BinaryReader br)
+        {
+            //try
+            //{
+            //    int count = br.ReadInt32();
+            //    foreach (var item in list)
+            //    {
+            //        if (item is string)
+            //        {
+            //            var str = (string) item;
+            //            // write lenght of the string first
+            //            bw.Write(str.Length);
+            //            // write every char of string
+            //            foreach (var c in str.ToCharArray())
+            //            {
+            //                bw.Write(c);
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine(ex.InnerException);
+            //}
+            return null;
+        }
+  
+}
 }

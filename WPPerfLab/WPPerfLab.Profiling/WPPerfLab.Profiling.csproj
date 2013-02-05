@@ -87,6 +87,7 @@
     <Compile Include="ForegroundMemoryProfiler.cs" />
     <Compile Include="MemoryProfiler.cs" />
     <Compile Include="MemoryProfilerSettings.cs" />
+    <Compile Include="MemoryProfilerUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />

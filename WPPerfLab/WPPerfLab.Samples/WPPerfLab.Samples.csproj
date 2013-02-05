@@ -133,6 +133,9 @@
     <Compile Include="ListSamples\VirtualizedListSampleView.xaml.cs">
       <DependentUpon>VirtualizedListSampleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThreadSamples\ThreadSamplesView.xaml.cs">
+      <DependentUpon>ThreadSamplesView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -178,6 +181,10 @@
     <Page Include="ListSamples\VirtualizedListSampleView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ThreadSamples\ThreadSamplesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

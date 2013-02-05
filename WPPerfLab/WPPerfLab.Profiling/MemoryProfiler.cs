@@ -106,8 +106,8 @@ namespace WPPerfLab.Profiling
 
         private static void TimerTick(object sender, EventArgs e)
         {
-            string currentMemory = GetFormatedMemoryUsage(ForegroundMemoryProfiler.CurrentMemoryUsage);
-            string peakMemory = GetFormatedMemoryUsage(ForegroundMemoryProfiler.PeakMemoryUsage);
+            string currentMemory = MemoryProfilerUtils.GetFormatedMemoryUsageInMB(ForegroundMemoryProfiler.CurrentMemoryUsage);
+            string peakMemory = MemoryProfilerUtils.GetFormatedMemoryUsageInMB(ForegroundMemoryProfiler.PeakMemoryUsage);
             string batteryRemainingPercent = BatteryUsageProfiler.BatteryRemainingChargePercent.ToString();
 
             if (settings.IsConsoleLoggingEnabled)
@@ -129,11 +129,6 @@ namespace WPPerfLab.Profiling
         private static void LogToConsole(string parameterName, string parameterValue)
         {
             Debug.WriteLine(string.Format("{0}: {1}", parameterName, parameterValue));
-        }
-
-        private static string GetFormatedMemoryUsage(long memoryUsageInBytes)
-        {
-            return string.Format("{0} MB", Math.Ceiling((double)memoryUsageInBytes / 1048576));
         }
     }
 }
