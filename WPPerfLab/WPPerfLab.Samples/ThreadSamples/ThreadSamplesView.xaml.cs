@@ -4,14 +4,11 @@ using System.Threading;
 using System.Windows;
 using Microsoft.Phone.Controls;
 using WPPerfLab.Profiling;
-using Windows.Phone.System.Memory;
 
 namespace WPPerfLab.Samples.ThreadSamples
 {
     public partial class ThreadSamplesView : PhoneApplicationPage
     {
-        private int numberOfTimes = 1000;
-
         public ThreadSamplesView()
         {
             InitializeComponent();
@@ -20,19 +17,32 @@ namespace WPPerfLab.Samples.ThreadSamples
 
         private void DoSomething()
         {
-            Debug.WriteLine("Created thread nr.{0}, memory usage: {1}, process commited bytes: {2}", 
-                Thread.CurrentThread.ManagedThreadId,
-                MemoryProfilerUtils.GetFormatedMemoryUsageInKB(ForegroundMemoryProfiler.CurrentMemoryUsage), 
-                MemoryProfilerUtils.GetFormatedMemoryUsageInKB((long)MemoryManager.ProcessCommittedBytes));
-            Thread.Sleep(1000000);
+            while (true)
+            {
+                Thread.Sleep(1000);
+            }
         }
 
-        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        private void RunThreadMeasurement(int numberOfThreads)
         {
-            for (int i = 0; i < numberOfTimes; i++)
+            var initialMemoryUsage = ForegroundMemoryProfiler.CurrentMemoryUsage;
+            for (int i = 0; i < numberOfThreads; i++)
             {
                 new Thread(DoSomething).Start();
             }
+            var memoryDelta = ForegroundMemoryProfiler.CurrentMemoryUsage - initialMemoryUsage;
+            var memoryPerThread = memoryDelta / numberOfThreads;
+
+            Debug.WriteLine("Memory per thread (for {0} threads): {1}",
+                numberOfThreads,
+                MemoryProfilerUtils.GetFormatedMemoryUsageInKB(memoryPerThread));
+        }
+            
+        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        {
+            RunThreadMeasurement(10);
+            RunThreadMeasurement(100);
+            RunThreadMeasurement(500);
         }
     }
 }
