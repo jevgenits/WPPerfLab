@@ -65,6 +65,7 @@
                 <Button Click="NavigateToFixedMemoryLeakingPage" Content="fixed memory-leaking list" />
                 <Button Click="NavigateToBrokenUpdateTimer" Content="broken update timer" />
                 <Button Click="NavigateToFixedUpdateTimer" Content="fixed update timer" />
+                <Button Click="NavigateToSerialization" Content="serialization" />
                 <Button Click="NavigateToThreadSamples" Content="threads" />
             </ListBox>
         </Grid>

@@ -21,13 +21,7 @@ namespace WPPerfLab.Common.Entities
             var products = new List<ProductEntity>();
             for (int i = 1; i < numberOfProducts; i++)
             {
-                var newProduct = new ProductEntity()
-                {
-                    Title = string.Format("Item {0}", i),
-                    Description = TextUtils.GetStaticText(),
-                    ImagePath = ImageUtils.GetRandomImagePath()
-                };
-
+                var newProduct = GetProduct(string.Format("Item {0}", i));
                 products.Add(newProduct);
 
                 if (productAddedActions != null)
@@ -36,6 +30,17 @@ namespace WPPerfLab.Common.Entities
                 }
             }
             return products;
+        }
+
+        public static ProductEntity GetProduct(string productTitle = "some product", int numberOfKeys = 1)
+        {
+            return new ProductEntity()
+            {
+                Title = productTitle,
+                Description = TextUtils.GetStaticText(),
+                ImagePath = ImageUtils.GetRandomImagePath(),
+                Keys = GetRandomKeys(numberOfKeys)
+            };
         }
 
         private static List<Action<ProductEntity>> productAddedActions = new List<Action<ProductEntity>>();
@@ -51,5 +56,15 @@ namespace WPPerfLab.Common.Entities
                 productAddedActions.Remove(productAdded);
             }
         }
+
+        private static List<string> GetRandomKeys(int numberOfKeys)
+        {
+            var list = new List<string>();
+            for (int i = 0; i < numberOfKeys; i++)
+            {
+                list.Add(string.Format("Key{0}", i));
+            }
+            return list;
+        } 
     }
 }

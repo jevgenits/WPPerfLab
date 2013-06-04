@@ -4,9 +4,9 @@ using System.IO;
 
 namespace WPPerfLab.Common.Serialization.DataContract
 {
-    public class DataContractSerializationHelper
+    public class DataContractSerializationHelper : ISerializationHelper
     {
-        public static void Serialize(Stream streamObject, object objForSerialization)
+        public void Serialize(Stream streamObject, object objForSerialization)
         {
             if (objForSerialization == null || streamObject == null)
                 return;
@@ -15,7 +15,7 @@ namespace WPPerfLab.Common.Serialization.DataContract
             ser.WriteObject(streamObject, objForSerialization);
         }
 
-        public static object Deserialize(Stream streamObject, Type serializedObjectType)
+        public object Deserialize(Stream streamObject, Type serializedObjectType)
         {
             if (serializedObjectType == null || streamObject == null)
                 return null;

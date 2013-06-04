@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-
+using System.Windows.Controls;
 using Microsoft.Phone.Controls;
 
 namespace WPPerfLab.Samples
@@ -55,6 +55,11 @@ namespace WPPerfLab.Samples
         private void NavigateToSettingsPage(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/Settings/SettingsPage.xaml", UriKind.Relative));
+        }
+
+        private void NavigateToSerialization(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/SerializationSamples/SerializationSamplesPage.xaml", UriKind.Relative));
         }
 
         private void NavigateToThreadSamples(object sender, RoutedEventArgs e)

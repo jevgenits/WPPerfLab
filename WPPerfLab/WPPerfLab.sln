@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPPerfLab.Samples", "WPPerf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPPerfLab.Profiling", "WPPerfLab.Profiling\WPPerfLab.Profiling.csproj", "{80F39608-4591-4D58-A821-98595FA3571C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPPerfLab.ImageSamples", "WPPerfLab.ImageSamples\WPPerfLab.ImageSamples.csproj", "{470398C0-62A5-4E76-93F5-25FF5FEDF600}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,24 @@ Global
 		{80F39608-4591-4D58-A821-98595FA3571C}.Release|ARM.Build.0 = Release|ARM
 		{80F39608-4591-4D58-A821-98595FA3571C}.Release|x86.ActiveCfg = Release|x86
 		{80F39608-4591-4D58-A821-98595FA3571C}.Release|x86.Build.0 = Release|x86
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|ARM.ActiveCfg = Debug|ARM
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|ARM.Build.0 = Debug|ARM
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|ARM.Deploy.0 = Debug|ARM
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|x86.ActiveCfg = Debug|x86
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|x86.Build.0 = Debug|x86
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Debug|x86.Deploy.0 = Debug|x86
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|ARM.ActiveCfg = Release|ARM
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|ARM.Build.0 = Release|ARM
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|ARM.Deploy.0 = Release|ARM
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|x86.ActiveCfg = Release|x86
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|x86.Build.0 = Release|x86
+		{470398C0-62A5-4E76-93F5-25FF5FEDF600}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,23 +3,23 @@ using System.IO;
 
 namespace WPPerfLab.Common.Serialization.Binary
 {
-    public class BinarySerializationHelper 
+    public class BinarySerializationHelper : ISerializationHelper 
     {
-        public static void Serialize(Stream streamObject, object objForSerialization)
+        public void Serialize(Stream streamObject, object objForSerialization)
         {
             if (objForSerialization == null || streamObject == null)
                 return;
 
-            var ser = new CustomBinarySerializer(objForSerialization.GetType());
+            var ser = new SimpleBinarySerializer(objForSerialization.GetType());
             ser.WriteObject(streamObject, objForSerialization);
         }
 
-        public static object Deserialize(Stream streamObject, Type serializedObjectType)
+        public object Deserialize(Stream streamObject, Type serializedObjectType)
         {
             if (serializedObjectType == null || streamObject == null)
                 return null;
 
-            var ser = new CustomBinarySerializer(serializedObjectType);
+            var ser = new SimpleBinarySerializer(serializedObjectType);
             return ser.ReadObject(streamObject);
         }
     }

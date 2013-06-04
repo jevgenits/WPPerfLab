@@ -17,6 +17,7 @@ namespace WPPerfLab.Samples.ThreadSamples
 
         private void DoSomething()
         {
+            Thread.CurrentThread.IsBackground = true;
             while (true)
             {
                 Thread.Sleep(1000);

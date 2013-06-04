@@ -87,9 +87,10 @@
     <Compile Include="Entities\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Binary\BinarySerializationHelper.cs" />
-    <Compile Include="Serialization\Binary\CustomBinarySerializer.cs" />
+    <Compile Include="Serialization\Binary\SimpleBinarySerializer.cs" />
     <Compile Include="Serialization\DataContractJSON\DataContractJSONSerializationHelper.cs" />
     <Compile Include="Serialization\DataContract\DataContractSerializationHelper.cs" />
+    <Compile Include="Serialization\ISerializationHelper.cs" />
     <Compile Include="Serialization\XML\XMLSerializerHelper.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\TextUtils.cs" />
