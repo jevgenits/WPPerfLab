@@ -6,13 +6,13 @@ namespace WPPerfLab.Common.Serialization.DataContract
 {
     public class DataContractSerializationHelper : ISerializationHelper
     {
-        public void Serialize(Stream streamObject, object objForSerialization)
+        public void Serialize(Stream streamObject, object objectForSerialization)
         {
-            if (objForSerialization == null || streamObject == null)
+            if (objectForSerialization == null || streamObject == null)
                 return;
 
-            var ser = new DataContractSerializer(objForSerialization.GetType());
-            ser.WriteObject(streamObject, objForSerialization);
+            var ser = new DataContractSerializer(objectForSerialization.GetType());
+            ser.WriteObject(streamObject, objectForSerialization);
         }
 
         public object Deserialize(Stream streamObject, Type serializedObjectType)

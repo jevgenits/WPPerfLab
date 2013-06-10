@@ -6,13 +6,13 @@ namespace WPPerfLab.Common.Serialization.XML
 {
     public class XMLSerializerHelper : ISerializationHelper
     {
-        public void Serialize(Stream streamObject, object objForSerialization)
+        public void Serialize(Stream streamObject, object objectForSerialization)
         {
-            if (objForSerialization == null || streamObject == null)
+            if (objectForSerialization == null || streamObject == null)
                 return;
 
-            var serializer = new XmlSerializer(objForSerialization.GetType());
-            serializer.Serialize(streamObject, objForSerialization);
+            var serializer = new XmlSerializer(objectForSerialization.GetType());
+            serializer.Serialize(streamObject, objectForSerialization);
         }
 
         public object Deserialize(Stream streamObject, Type serializedObjectType)
