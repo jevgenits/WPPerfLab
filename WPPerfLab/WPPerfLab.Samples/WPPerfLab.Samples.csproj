@@ -95,6 +95,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseSamples\DatabaseSamplesPage.xaml.cs">
+      <DependentUpon>DatabaseSamplesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseSamples\DatabaseSamplesViewModel.cs" />
     <Compile Include="EnableRedrawRegionsSamples\BrokenTimerUpdatePage.xaml.cs">
       <DependentUpon>BrokenTimerUpdatePage.xaml</DependentUpon>
     </Compile>
@@ -145,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="DatabaseSamples\DatabaseSamplesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EnableRedrawRegionsSamples\BrokenTimerUpdatePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -199,7 +207,6 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WPPerfLab.Samples_2013_03_18_15_58_03.sap" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />

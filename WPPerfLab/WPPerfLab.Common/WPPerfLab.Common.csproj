@@ -83,6 +83,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Database\Denormalized\BookAuthorNormalized.cs" />
+    <Compile Include="Database\Denormalized\BookNormalized.cs" />
+    <Compile Include="Database\Normalized\BookNormalized.cs" />
+    <Compile Include="Database\Normalized\BookAuthorNormalized.cs" />
     <Compile Include="Entities\ProductEntity.cs" />
     <Compile Include="Entities\ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
